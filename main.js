@@ -27,17 +27,20 @@ const fetchAllUsers = async () => {
 const renderAllUsers = (users) => {
     let view = "";
     for (const user of users) {
-        view += `
-        <div>
-        <img src="${user.image}">
-        </div>
-        <div>
-        ${user.firstName}
-        ${user.lastName},
-        ${user.age}
-        </div>`;
+        view += createUserHTML(user);
+        
     }
     root.innerHTML = view;
+};
+
+const createUserHTML = (user) => { //solo una estructura HTML simple
+    return `
+    <div class="user">
+        <img class="user__image" src="${user.image}" alt="${user.firstName}">
+        <div class="user__name"> ${user.firstName}</div>
+        <div class="user__age"> ${user.age}</div>
+    </div>
+    `;
 };
 
 const delay = (t) => new Promise(r => setTimeout(r, t));
