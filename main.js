@@ -9,7 +9,7 @@ btnGetUsers.addEventListener("click", () => {
 const fetchAllUsers = async () => {
     try {
         loadingIndicator.textContent = "Cargando...";
-        await delay(500);
+        // await delay(500); //OJO eliminar en producción
         const response = await fetch("https://dummyjson.com/users");
         const data = await response.json();
         const users = data.users;
