@@ -3,17 +3,15 @@ const loadingIndicator = document.getElementById("loading");
 const root = document.getElementById("root");
 
 btnGetUsers.addEventListener("click", () => {
-    fetchAllUsers(); // Call all users
+    fetchAllUsers(); // Llamar a todos los usuarios
 });
 
 const fetchAllUsers = async () => {
     try {
-        loadingIndicator.textContent = "Loading...";
+        loadingIndicator.textContent = "Cargando...";
         await delay(500);
-
         const response = await fetch("https://dummyjson.com/users");
         const data = await response.json();
-
         const users = data.users;
         console.log(users);
         renderAllUsers(users);
@@ -25,20 +23,19 @@ const fetchAllUsers = async () => {
 };
 
 const renderAllUsers = (users) => {
-    let view = "";
+    let userHTML = "";
     for (const user of users) {
-        view += createUserHTML(user);
-        
+        userHTML += createUserHTML(user);
     }
-    root.innerHTML = view;
+    root.innerHTML = userHTML; // Corregir la asignación a root.innerHTML
 };
 
-const createUserHTML = (user) => { //solo una estructura HTML simple
+const createUserHTML = (user) => {
     return `
     <div class="user">
         <img class="user__image" src="${user.image}" alt="${user.firstName}">
-        <div class="user__name"> ${user.firstName}</div>
-        <div class="user__age"> ${user.age}</div>
+        <div class="user__name">${user.firstName}</div>
+        <div class="user__age">${user.age}</div>
     </div>
     `;
 };

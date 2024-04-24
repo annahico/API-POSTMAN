@@ -1,0 +1,16 @@
+#root{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.user{
+    max-width: 150px;
+    background-color: beige;
+    padding: 1em;
+}
+
+.user__image{
+    width: 100%;
+}
