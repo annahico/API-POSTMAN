@@ -9,8 +9,14 @@
     max-width: 150px;
     background-color: beige;
     padding: 1em;
+    border: 5px solid gray;
 }
 
 .user__image{
     width: 100%;
+}
+
+.user__name{
+    font-weight: bold;
+    font-size: 1.2em;
 }

@@ -27,7 +27,7 @@ const renderAllUsers = (users) => {
     for (const user of users) {
         userHTML += createUserHTML(user);
     }
-    root.innerHTML = userHTML; // Corregir la asignación a root.innerHTML
+    root.innerHTML = userHTML; 
 };
 
 const createUserHTML = (user) => {
@@ -35,6 +35,7 @@ const createUserHTML = (user) => {
     <div class="user">
         <img class="user__image" src="${user.image}" alt="${user.firstName}">
         <div class="user__name">${user.firstName}</div>
+        <div class="user__name">${user.lastName}</div>
         <div class="user__age">${user.age}</div>
     </div>
     `;
