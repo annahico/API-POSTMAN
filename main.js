@@ -1,16 +1,15 @@
 const btnGetUsers = document.getElementById("get-users");
-const loading = document.getElementById("loading");
+const loadingIndicator = document.getElementById("loading");
 const root = document.getElementById("root");
 
 btnGetUsers.addEventListener("click", () => {
-    getAllUsers(); // llamar a todos los usuarios
+    fetchAllUsers(); // Call all users
 });
 
-const getAllUsers = async () => {
+const fetchAllUsers = async () => {
     try {
-        loading.textContent = "Loading...";
-        await delay(1000);
-
+        loadingIndicator.textContent = "Loading...";
+        await delay(500);
 
         const response = await fetch("https://dummyjson.com/users");
         const data = await response.json();
@@ -21,15 +20,24 @@ const getAllUsers = async () => {
     } catch (error) {
         console.log(error);
     } finally {
-        loading.textContent = "";
+        loadingIndicator.textContent = "";
     }
 };
 
 const renderAllUsers = (users) => {
+    let view = "";
     for (const user of users) {
-        root.innerHTML += user.firstName + ",";
+        view += `
+        <div>
+        <img src="${user.image}">
+        </div>
+        <div>
+        ${user.firstName}
+        ${user.lastName},
+        ${user.age}
+        </div>`;
     }
+    root.innerHTML = view;
 };
 
-const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-
+const delay = (t) => new Promise(r => setTimeout(r, t));
